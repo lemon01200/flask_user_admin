@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+</head>
+<body>
+<h1>用户注册</h1>
+<form method="post">
+    {% if 'csrf_token' in form %}
+        {{data_form.csrf_token}}
+   {% endif %}
+    <!--显示表单-->
+    {{ data_form.username.label}} {{ data_form.username }}<br>
+    {{ data_form.password.label }} {{ data_form.password }}<br>
+    {{ data_form.password2.label }} {{ data_form.password2 }}<br>
+    {{ data_form.input }}<button type="button"><a href="{{url_for("index")}}">返回首页</a></button><br>
+    <!--将flash闪现内容显示-->
+    <!--将错误内容显示-->
+    {{ view_tips.mesg }}
+</form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button type="button"><a href="{{url_for("login_bl.landing")}}" target=" __blank">登录</a></button>
+<button type="button"><a href="{{url_for("add_user")}}" target=" __blank">注册</a><br/></button>
+{# 表格循环输出输出user的信息 #}
+<h2>用户信息</h2>
+    <table border="1" cellspacing="0" width="90%">
+        <tr>
+            <td>序号</td>
+            <td>用户名</td>
+            <td>密码</td>
+            <td>操作</td>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.password }}</td>
+                <td><a href="{{url_for("delete",user_id=user.id)}}">删除</a>
+                   {# <a href="{{url_for("edit", user_id=user.id, find_user=find_user)}}" target=" __blank">编辑</a></td> #}
+                    <a href="http://127.0.0.1:5000/edit?user_id={{ user.id }}&find_user={{ find_user }}" target=" __blank">编辑</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    {{ tips.mesg }}
+
+</body>
+</html>
